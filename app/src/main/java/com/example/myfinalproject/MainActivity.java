@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
                 Fragment selectedFragment = null;
+                ProductsFragment product = null;
 
                 switch (menuItem.getItemId()) {
                     case R.id.menu_home:
