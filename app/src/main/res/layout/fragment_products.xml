@@ -10,6 +10,11 @@
     android:background="@color/cardview_dark_background"
     >
 
+    <activity
+        android:name=".ProductsFragment"
+        android:label="ProductsFragment" >
+    </activity>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/my_recycler_view"
         android:layout_width="match_parent"

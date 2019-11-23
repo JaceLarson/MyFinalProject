@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -38,7 +39,10 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.menu_prouducts:
-                        selectedFragment = new ProductsFragment();
+                        //selectedFragment = new ProductsFragment();
+
+                        Intent intent=new Intent(MainActivity.this,ProductsFragment.class);
+                        startActivity(intent);
                         break;
 
                     case R.id.menu_my_cart:
