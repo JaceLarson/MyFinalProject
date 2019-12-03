@@ -5,11 +5,11 @@
         android:id="@+id/menu_home"
         android:icon='@drawable/ic_home_white_24dp'/>
     <item android:title="@string/products"
-        android:id="@+id/menu_prouducts"
+        android:id="@+id/menu_products"
         android:icon='@drawable/ic_store_black_24dp'/>
     <item android:title="@string/my_cart"
         android:id="@+id/menu_my_cart"
-        android:icon='@drawable/ic_home_white_24dp'/>
+        android:icon='@drawable/ic_shopping_cart_white_24dp'/>
     <item android:title="@string/my_account"
         android:id="@+id/menu_my_account"
         android:icon='@drawable/ic_home_white_24dp'/>

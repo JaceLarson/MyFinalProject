@@ -38,11 +38,11 @@ public class MainActivity extends AppCompatActivity {
                         selectedFragment  = new HomeFragment();
                         break;
 
-                    case R.id.menu_prouducts:
-                        //selectedFragment = new ProductsFragment();
+                    case R.id.menu_products:
+                        selectedFragment = new ProductsFragmentTest();
 
-                        Intent intent=new Intent(MainActivity.this,ProductsFragment.class);
-                        startActivity(intent);
+//                        Intent intent=new Intent(MainActivity.this,ProductsFragment.class);
+//                        startActivity(intent);
                         break;
 
                     case R.id.menu_my_cart:
