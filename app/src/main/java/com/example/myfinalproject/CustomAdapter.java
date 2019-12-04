@@ -2,64 +2,80 @@ package com.example.myfinalproject;
 
 
 
+import android.content.Context;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
-    private ArrayList<DataModel> dataSet;
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textViewName;
-        TextView textViewVersion;
-        ImageView imageViewIcon;
+public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ProductViewHolder> {
 
-        public MyViewHolder(View itemView) {
-            super(itemView);
-            this.textViewName = (TextView) itemView.findViewById(R.id.textViewName);
-            this.textViewVersion = (TextView) itemView.findViewById(R.id.textViewVersion);
-            this.imageViewIcon = (ImageView) itemView.findViewById(R.id.imageView);
-        }
-    }
 
-    public CustomAdapter(ArrayList<DataModel> data) {
-        this.dataSet = data;
+    //this context we will use to inflate the layout
+    private Context mCtx;
+
+    //we are storing all the products in a list
+    private List<Product> productList;
+
+    //getting the context and product list with constructor
+    public CustomAdapter(Context mCtx, List<Product> productList) {
+        this.mCtx = mCtx;
+        this.productList = productList;
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent,
-                                           int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recylcer_item, parent, false);
-
-        view.setOnClickListener(ProductsFragment.myOnClickListener);
-
-        MyViewHolder myViewHolder = new MyViewHolder(view);
-        return myViewHolder;
+    public ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        //inflating and returning our view holder
+        LayoutInflater inflater = LayoutInflater.from(mCtx);
+        View view = inflater.inflate(R.layout.recylcer_item, null);
+        return new ProductViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, final int listPosition) {
+    public void onBindViewHolder(ProductViewHolder holder, int position) {
+        //getting the product of the specified position
+        Product product = productList.get(position);
 
-        TextView textViewName = holder.textViewName;
-        TextView textViewVersion = holder.textViewVersion;
-        ImageView imageView = holder.imageViewIcon;
+        //binding the data with the viewholder views
+        holder.textViewTitle.setText(product.getTitle());
+        holder.textViewShortDesc.setText(product.getShortdesc());
+        holder.textViewRating.setText(String.valueOf(product.getRating()));
+        holder.textViewPrice.setText(String.valueOf(product.getPrice()));
 
-        textViewName.setText(dataSet.get(listPosition).getName());
-        textViewVersion.setText(dataSet.get(listPosition).getVersion());
-        imageView.setImageResource(dataSet.get(listPosition).getImage());
+        holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(product.getImage()));
+
     }
+
 
     @Override
     public int getItemCount() {
-        return dataSet.size();
+        return productList.size();
+    }
+
+
+    class ProductViewHolder extends RecyclerView.ViewHolder {
+
+        TextView textViewTitle, textViewShortDesc, textViewRating, textViewPrice;
+        ImageView imageView;
+
+        public ProductViewHolder(View itemView) {
+            super(itemView);
+
+            textViewTitle = itemView.findViewById(R.id.textViewTitle);
+            textViewShortDesc = itemView.findViewById(R.id.textViewShortDesc);
+            textViewRating = itemView.findViewById(R.id.textViewRating);
+            textViewPrice = itemView.findViewById(R.id.textViewPrice);
+            imageView = itemView.findViewById(R.id.imageView);
+        }
     }
 }

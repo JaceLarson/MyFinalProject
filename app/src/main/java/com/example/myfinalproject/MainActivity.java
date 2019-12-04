@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
                 Fragment selectedFragment = null;
-                ProductsFragment product = null;
+
 
                 switch (menuItem.getItemId()) {
                     case R.id.menu_home:
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.menu_products:
-                        selectedFragment = new ProductsFragmentTest();
+                        selectedFragment = new ProductsFragment();
 
 //                        Intent intent=new Intent(MainActivity.this,ProductsFragment.class);
 //                        startActivity(intent);
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.menu_my_cart:
                         selectedFragment = new MyCartFragment();
+                        break;
 
                     case R.id.menu_my_account:
                         selectedFragment = new AccountFragment();
